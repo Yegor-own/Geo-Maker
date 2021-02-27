@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geo Marker</title>
+
+  <!-- Links -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+  <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'main/map.css' %}">
+</head>
+<body>
+  <div id="map"></div><br>
+  <div class="route">
+    {% load static %}
+    <button onclick="rect()" id="rect"><img src="{% static 'main/Rectangle.png' %}" height="100px" alt=""></button>
+    {% load static %}
+    <button onclick="heart()" id="heart"><img src="{% static 'main/heart.png'%}" height="100px" alt=""></button>
+  </div>
+  {% load static %}
+  <script type="text/javascript" src="{% static 'main/map.js' %}"></script>
+  {% load static %}
+  <script type="text/javascript" src="{% static 'main/routing.js' %}"></script>
+</body>
+</html>
