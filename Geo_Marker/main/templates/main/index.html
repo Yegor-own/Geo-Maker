@@ -1,33 +1,35 @@
 <!doctype html>
+{% load static %}
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Geo Marker</title>
+  <link rel="shortcut icon" href="{% static 'main/images/favicon.ico' %}" />
 
   <!-- Links -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
   <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
-  {% load static %}
+  <script src="http://www.liedman.net/lrm-graphhopper/dist/lrm-graphhopper-1.2.0.min.js"></script>
   <link rel="stylesheet" type="text/css" href="{% static 'main/map.css' %}">
 </head>
 <body>
   <div id="map"></div><br>
   <div class="route">
-    {% load static %}
-    <button onclick="rect()" id="rect"><img src="{% static 'main/rect.png' %}" height="100px" alt="Прямоугольник"></button>
-    {% load static %}
-    <button onclick="heart()" id="heart"><img src="{% static 'main/heart.png'%}" height="100px" alt="Сердечко"></button>
-    {% load static %}
-    <button onclick="cat()" id="cat"><img src="{% static 'main/cat.png'%}" height="100px" alt="Кошка"></button>
+    <button onclick="bone()" id="bone"><img src="{% static 'main/images/flower.png' %}" height="100px" alt="Кость"></button>
+    <button onclick="heart()" id="heart"><img src="{% static 'main/images/heart.png'%}" height="100px" alt="Сердечко"></button>
+    <button onclick="cat()" id="cat"><img src="{% static 'main/images/cat.png'%}" height="100px" alt="Кошка"></button>
+    <button onclick="house()" id="house"><img src="{% static 'main/images/house.png' %}" height="100px" alt="Кость"></button>
+    <button onclick="fish()" id="fish"><img src="{% static 'main/images/fish.png'%}" height="100px" alt="Сердечко"></button>
+    <button onclick="duck()" id="duck"><img src="{% static 'main/images/duck.png'%}" height="100px" alt="Кошка"></button>
   </div>
-  {% load static %}
+  <br>
+  <div class="load"><a href="http://127.0.0.1:8000/upload/">Upload your image</a></div>
   <script type="text/javascript" src="{% static 'main/map.js' %}"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  {% load static %}
   <script type="text/javascript" src="{% static 'main/routing.js' %}"></script>
 </body>
 </html>

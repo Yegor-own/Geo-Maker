@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload</title>
+</head>
+<body>
+    <div class="load">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="image">
+            <button type="submit">Згрузить свою картинку</button>
+        </form>
+    </div>
+    <br>
+    <a href="http://127.0.0.1:8000/">На главную</a>
+</body>
+</html>

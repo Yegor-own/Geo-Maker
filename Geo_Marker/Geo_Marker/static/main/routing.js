@@ -27,16 +27,31 @@ function request(figure) {
       },
       success: function(response) {
         L.Routing.control({
+//           createMarker: function() { return null; },
+lineOptions: {
+           styles: [
+               {color: 'white', opacity: 0.9, weight: 9},
+               {color: '#4000FFFF', opacity: 1, weight: 7}
+           ]
+        },
           waypoints: response.coordinates,
-          routeWhileDragging: false
+          routeWhileDragging: false,
+          router: L.Routing.graphHopper('641393f2-84a1-4d30-a186-9c3278155c49', {
+            urlParameters: {
+               vehicle: 'foot'
+            }
+          })
+          // router: new L.Routing.OSRMv1({
+          //   profile: 'foot'
+          // })
         }).addTo(map)
       }
     })
   }
 }
 
-function rect() {
-  request('rect')
+function bone() {
+  request('flower')
 }
 
 function heart() {
@@ -47,83 +62,43 @@ function cat() {
   request('cat')
 }
 
-//xhr.open('GET', 'http://127.0.0.1:8000/route', true);
-//    xhr.send(figure)
-//    console.log({
-//      start: loc,
-//      figure: figure
-//    })
-//    if (xhr.status != 200) {
-//      alert( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
-//    } else {
-//      alert( xhr.responseText ); // responseText -- текст ответа.
-//      L.Routing.control({
-//        waypoints: xhr.responseText,
-//        // {lat: 56.8360, lng: 60.5856},
-//        // {lat: 56.8360, lng: 60.5856},
-//        // {lat: 56.8363, lng: 60.5879},
-//        // {lat: 56.8345, lng: 60.5861},
-//        // {lat: 56.8347, lng: 60.5885}
-//        routeWhileDragging: false,
-//        // waypointMode: 'snap',
-//        // router: new L.Routing.Mapzen('valhalla-apikey', 'pedestrian'),
-//        // formatter: new L.Routing.Mapzen.Formatter()
-//      }).addTo(map)
-//    }
-//  }
-//  else {
-//    alert('Вберите место старта')
-//  }
+function fish() {
+  request('fish')
+}
 
+function house() {
+  request('house')
+}
+
+function duck() {
+  request('duck')
+}
+
+//let geo =
+//L.geoJSON(geo).addTo(map)
 
 //L.Routing.control({
-//  waypoints:
-//[{'lat': 56.8496, 'lng': 60.6178},
-// {'lat': 56.8496, 'lng': 60.6178},
-// {'lat': 56.8496, 'lng': 60.6177},
-// {'lat': 56.8496, 'lng': 60.6176},
-// {'lat': 56.8496, 'lng': 60.6176},
-// {'lat': 56.8496, 'lng': 60.6175},
-// {'lat': 56.8496, 'lng': 60.6174},
-// {'lat': 56.8496, 'lng': 60.6174},
-// {'lat': 56.8495, 'lng': 60.6174},
-// {'lat': 56.8494, 'lng': 60.6174},
-// {'lat': 56.8494, 'lng': 60.6175},
-// {'lat': 56.8494, 'lng': 60.6175},
-// {'lat': 56.8493, 'lng': 60.6175},
-// {'lat': 56.8493, 'lng': 60.6175},
-// {'lat': 56.8491, 'lng': 60.6175},
-// {'lat': 56.849, 'lng': 60.6175},
-// {'lat': 56.849, 'lng': 60.6175},
-// {'lat': 56.8489, 'lng': 60.6175},
-// {'lat': 56.8489, 'lng': 60.6174},
-// {'lat': 56.8488, 'lng': 60.6174},
-// {'lat': 56.8488, 'lng': 60.6174},
-// {'lat': 56.8487, 'lng': 60.6174},
-// {'lat': 56.8487, 'lng': 60.6175},
-// {'lat': 56.8487, 'lng': 60.6176},
-// {'lat': 56.8488, 'lng': 60.6177},
-// {'lat': 56.8488, 'lng': 60.6177},
-// {'lat': 56.8487, 'lng': 60.6178},
-// {'lat': 56.8487, 'lng': 60.6179},
-// {'lat': 56.8487, 'lng': 60.618},
-// {'lat': 56.8488, 'lng': 60.618},
-// {'lat': 56.8489, 'lng': 60.6181},
-// {'lat': 56.8489, 'lng': 60.6181},
-// {'lat': 56.849, 'lng': 60.6182},
-// {'lat': 56.8491, 'lng': 60.6182},
-// {'lat': 56.8492, 'lng': 60.6182},
-// {'lat': 56.8492, 'lng': 60.6182},
-// {'lat': 56.8493, 'lng': 60.6182},
-// {'lat': 56.8493, 'lng': 60.6181},
-// {'lat': 56.8494, 'lng': 60.6181},
-// {'lat': 56.8494, 'lng': 60.6181},
-// {'lat': 56.8495, 'lng': 60.618},
-// {'lat': 56.8496, 'lng': 60.618}],
-        // {lat: 56.8360, lng: 60.5856},
-        // {lat: 56.8360, lng: 60.5856},
-        // {lat: 56.8363, lng: 60.5879},
-        // {lat: 56.8345, lng: 60.5861},
-        // {lat: 56.8347, lng: 60.5885}
-//  routeWhileDragging: false,
-//}).addTo(map)
+//          // plan: new L.Routing.plan({
+//          //   createMarker: function() { return null }
+//          // }),
+//          waypoints: ,
+//          routeWhileDragging: false,
+//          // router: new L.Routing.OSRMv1({
+//          //   profile: 'foot'
+//          // })
+//        }).addTo(map)
+
+// waypointMode: 'snap',
+// router: new L.Routing.Mapzen('valhalla-apikey', 'pedestrian'),
+// formatter: new L.Routing.Mapzen.Formatter()
+
+//L.Routing.control({
+//          // plan: new L.Routing.plan({
+//          //   createMarker: function() { return null }
+//          // }),
+//          waypoints: response.coordinates,
+//          routeWhileDragging: false,
+//          // router: new L.Routing.OSRMv1({
+//          //   profile: 'foot'
+//          // })
+//        }).addTo(map)
