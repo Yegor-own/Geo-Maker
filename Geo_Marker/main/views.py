@@ -8,7 +8,6 @@ from shapely.geometry import Point
 from django.http import JsonResponse
 from django.core.files.storage import FileSystemStorage
 import os
-import shutil
 import json
 
 
