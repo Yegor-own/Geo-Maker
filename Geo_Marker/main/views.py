@@ -9,6 +9,7 @@ from django.http import JsonResponse
 from django.core.files.storage import FileSystemStorage
 import os
 import shutil
+import json
 
 
 class AjaxHandlerView(View):
@@ -17,7 +18,7 @@ class AjaxHandlerView(View):
         lng = request.GET.get('lng')
         figure = request.GET.get('fig')
         if figure:
-            src = "C:/Users/egor8/Geo-Marker-Server/Geo_Marker/Geo_Marker/static/main/images/" + figure + '.png'
+            src = "C:/Users/egor8/Geo-Marker-Server/Geo_Marker/Geo_Marker/static/main/images/" + figure
             print(src)
             img = cv2.imread(src)
             gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -45,7 +46,7 @@ class AjaxHandlerView(View):
             path = optimized_path(squeezed)
             x = np.array([i[0] for i in path])
             y = np.array([i[1] for i in path])
-            meters = 5
+            meters = float(request.GET.get('length')) / 0.84
             x_original_point = lat
             y_original_point = lng
 
@@ -75,7 +76,12 @@ class AjaxHandlerView(View):
                 f[0], f[1] = f[1], f[0]
                 result.append(f)
             return JsonResponse({'coordinates': result}, status=200)
-        return render(request, 'main/index.html')
+        with open('C:/Users/egor8/Geo-Marker-Server/Geo_Marker/Geo_Marker/static/main/images.json') as json_file:
+            splited = []
+            data = json.load(json_file)
+            for j in data['img']:
+                splited.append([j.split('.')[0], j])
+        return render(request, 'main/index.html', {'images': splited})
 
 
 def upload(requset):
@@ -83,11 +89,17 @@ def upload(requset):
         upload = requset.FILES['image']
         fs = FileSystemStorage()
         fs.save(upload.name, upload)
-        os.rename("C:/Users/egor8/Geo-Marker-Server/Geo_Marker/media/" + upload.name, "C:/Users/egor8/Geo-Marker-Server/Geo_Marker/Geo_Marker/static/main/" + upload.name)
-        shutil.move("C:/Users/egor8/Geo-Marker-Server/Geo_Marker/media/" + upload.name, "C:/Users/egor8/Geo-Marker-Server/Geo_Marker/Geo_Marker/static/main/" + upload.name)
-        os.replace("C:/Users/egor8/Geo-Marker-Server/Geo_Marker/media/" + upload.name, "C:/Users/egor8/Geo-Marker-Server/Geo_Marker/Geo_Marker/static/main/" + upload.name)
-        # file = open('C:/Users/egor8/Geo-Marker-Server/Geo_Marker/Geo_Marker/static/main/userfile.png', 'w')
-        # file.write(upload)
-        # file.close()
+
+        def write_json(data, filename='C:/Users/egor8/Geo-Marker-Server/Geo_Marker/Geo_Marker/static/main/images.json'):
+            with open(filename, 'w') as f:
+                json.dump(data, f, indent=4)
+
+        with open('C:/Users/egor8/Geo-Marker-Server/Geo_Marker/Geo_Marker/static/main/images.json') as json_file:
+            data = json.load(json_file)
+            temp = data['img']
+            if upload.name not in temp:
+                temp.append(upload.name)
+        write_json(data)
+        os.replace("C:/Users/egor8/Geo-Marker-Server/Geo_Marker/media/" + upload.name, "C:/Users/egor8/Geo-Marker-Server/Geo_Marker/Geo_Marker/static/main/images/" + upload.name)
 
     return render(requset, 'main/upload.html')

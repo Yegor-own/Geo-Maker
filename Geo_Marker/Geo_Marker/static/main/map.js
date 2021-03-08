@@ -2,7 +2,7 @@
 
 {
   let map = document.querySelector('#map')
-  map.style.height = document.documentElement.clientHeight - 200 + 'px'
+  map.style.height = document.documentElement.clientHeight - 250 + 'px'
 }
 
 //mapboxgl.accessToken = 'pk.eyJ1IjoiZWdvcjAxOCIsImEiOiJja2kxamN6bDEwdjAyMnpxa2lhbHJ4eG9lIn0.pGEFxMvKpDrBAdbW-SukNQ';

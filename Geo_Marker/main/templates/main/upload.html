@@ -1,18 +1,28 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Upload</title>
+    <title>Загрузка</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/upload.css' %}">
 </head>
 <body>
+<br><br>
+    <div class="notice">
+        <h3>Важно</h3>
+        <p>Желательно загружать картинки похожие на те что изначально предложены, если картинка слишком сложная с множеством изгибов, программа не сможет построить маршрут так как максимальное количество точек по которым можно простроить маршрут равно 80</p>
+    </div>
+<br>
     <div class="load">
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <input type="file" name="image">
-            <button type="submit">Згрузить свою картинку</button>
+            <button type="submit">Згрузить</button>
         </form>
     </div>
     <br>
-    <a href="http://127.0.0.1:8000/">На главную</a>
+    <div class="back">
+        <a href="http://127.0.0.1:8000/"><= На главную</a>
+    </div>
 </body>
 </html>
