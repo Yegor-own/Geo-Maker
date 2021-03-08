@@ -17,7 +17,7 @@ map.on('click', function(e) {
 
 let ico = L.icon({
   iconUrl: '/static/main/images/red.png',
-  iconSize: [10, 10]
+  iconSize: [20, 20]
 })
 
 function request(figure) {

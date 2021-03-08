@@ -1,10 +1,10 @@
 {
     "img": [
         "heart.png",
-        "fish.png",
         "duck.png",
         "flower.png",
         "house.png",
-        "cat.png"
+        "cat.png",
+        "fish.png"
     ]
 }

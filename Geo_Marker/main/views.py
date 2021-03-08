@@ -45,7 +45,10 @@ class AjaxHandlerView(View):
             path = optimized_path(squeezed)
             x = np.array([i[0] for i in path])
             y = np.array([i[1] for i in path])
-            meters = float(request.GET.get('length')) / 0.84
+            if float(request.GET.get('length')) > 4:
+                meters = float(request.GET.get('length')) / 0.8
+            else:
+                meters = float(request.GET.get('length')) / 0.9
             x_original_point = lat
             y_original_point = lng
 
