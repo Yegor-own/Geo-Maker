@@ -72,7 +72,7 @@ class AjaxHandlerView(View):
                 m = str(m)
                 f = m.split()[1:3]
                 f[0] = f[0][1:len(f[0])+1]
-                f[1] = f[1][0:len(f[0])-2]
+                f[1] = f[1][0:len(f[0])-4]
                 f[0] = float(f[0])
                 f[1] = float(f[1])
                 f[0], f[1] = f[1], f[0]
